@@ -11,9 +11,14 @@
             return <h1>{`header is ${title ? title : 'Empty'}`}</h1>
         }
         function HomePage(){
+            const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
             return <div>
                 <Header title="React Learning"></Header>
-                <Header></Header>
+                <ul>
+                    {names.map((name) => (
+                        <li key={name}>{name}</li>
+                    ))}
+                </ul>
             </div>;
         }
         const root = ReactDOM.createRoot(app);
