@@ -10,15 +10,28 @@
             console.log(title)
             return <h1>{`header is ${title ? title : 'Empty'}`}</h1>
         }
+        
+        function LikeButton({text, likes, setLikes}){
+            console.log(`text is: ${text ? text : "Empty text"}`);
+            function handleLikeButtonClick(){
+                console.log("Incremented like counter by 1");
+                setLikes(likes + 1);
+            }    
+        return <button onClick={handleLikeButtonClick}> {text} {likes} </button>
+        }
+
+
         function HomePage(){
             const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+            const [likes, setLikes] = React.useState(0);
             return <div>
                 <Header title="React Learning"></Header>
                 <ul>
                     {names.map((name) => (
-                        <li key={name}>{name}</li>
+                        <li key={name}>{name} is cool</li>
                     ))}
                 </ul>
+                <LikeButton text="like" likes={likes} setLikes={setLikes}></LikeButton>
             </div>;
         }
         const root = ReactDOM.createRoot(app);
